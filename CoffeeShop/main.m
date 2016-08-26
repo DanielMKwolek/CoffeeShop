@@ -14,10 +14,8 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         EspressoMachine *espressoMachine = [[EspressoMachine alloc] init];
         Barista *barista = [[Barista alloc] init];
-        
-        [barista prepareEspresso:espressoMachine];
-        
-        
+        espressoMachine.delegate = barista;
+        [espressoMachine.delegate prepareEspresso:espressoMachine];
     }
     return 0;
 }

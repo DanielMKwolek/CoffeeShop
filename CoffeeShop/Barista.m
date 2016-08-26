@@ -13,19 +13,19 @@
 - (void) addBeans:(EspressoMachine *)espressoMachine
 {
     NSLog(@"I just added some beans");
-    espressoMachine.hasbeans = true;
+    [espressoMachine addBeans];
 }
 
 - (void) addWater:(EspressoMachine *)espressoMachine
 {
     NSLog(@"I just added some water");
-    espressoMachine.haswater = true;
+    [espressoMachine addWater];
 }
 
 - (void) heatWater:(EspressoMachine *)espressoMachine
 {
     NSLog(@"I just heated the water");
-    espressoMachine.waterIsHot = true;
+    [espressoMachine heatWater];
 }
 
 - (void) prepareEspresso:(EspressoMachine *)espressoMachine
@@ -48,7 +48,7 @@
                 }
             } else
             {
-                NSLog(@"Sorry, there's no beans in the machine");
+                NSLog(@"Sorry, there are no beans in the machine");
                 [self addBeans:espressoMachine];
             }
         } else
@@ -57,11 +57,12 @@
             [self addWater:espressoMachine];
         }
     }
+    [espressoMachine makeEspresso];
 }
 
 - (void)espressoMachineWaterHasBecomeHot:(EspressoMachine *)espressoMachine
 {
-    espressoMachine.waterIsHot = TRUE;
+    NSLog(@"The water just heated up!");
 }
 
 - (void)espressoMachineDidFinishMakingEspresso:(EspressoMachine *)espressoMachine

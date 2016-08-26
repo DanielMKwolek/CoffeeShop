@@ -16,6 +16,7 @@
 - (void)heatWater;
 - (void)addBeans;
 - (void)addWater;
+- (void)makeEspresso;
 
 
 @property (nonatomic)BOOL haswater;
@@ -28,8 +29,9 @@
 
 @protocol EspressoMachineDelegate
 
-- (void)prepareEspresso:(EspressoMachine *)espressoMachine;
-- (void)espressoMachineWaterHasBecomeHot:(EspressoMachine *)espressoMachine;
 - (void)espressoMachineDidFinishMakingEspresso:(EspressoMachine *)espressoMachine;
+@optional
+- (void)espressoMachineWaterHasBecomeHot:(EspressoMachine *)espressoMachine;
+- (void)prepareEspresso:(EspressoMachine *)espressoMachine;
 
 @end

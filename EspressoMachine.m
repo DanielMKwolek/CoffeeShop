@@ -10,6 +10,16 @@
 
 @implementation EspressoMachine
 
+-(instancetype)init
+{
+    self = [super init];
+    {
+        _hasbeans = NO;
+        _waterIsHot = NO;
+        _haswater =NO;
+    }
+    return self;
+}
 
 - (void)addWater
 {
@@ -19,11 +29,17 @@
 - (void)heatWater
 {
     _waterIsHot = TRUE;
+    [_delegate espressoMachineWaterHasBecomeHot:self];
 }
 
 - (void)addBeans
 {
     _hasbeans = TRUE;
+}
+- (void)makeEspresso
+{
+    [_delegate prepareEspresso:self];
+    [_delegate espressoMachineDidFinishMakingEspresso:self];
 }
 
 @end
